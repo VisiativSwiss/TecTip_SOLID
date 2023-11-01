@@ -1,5 +1,17 @@
 ﻿namespace DIP
 {
+    // Not conforming to DIP
+    public class ModelLoaderWrong
+    {
+        private FileRepository _repository = new FileRepository(); // High-level module depending on low-level
+
+        public SolidWorksModel LoadModel(string path)
+        {
+            var data = _repository.ReadData(path);
+            // Model loading logic...
+            return new SolidWorksModel();
+        }
+    }
     public class SolidWorksModel
     {
         public void DrawModel() { /* ... code to draw the model ... */ }
